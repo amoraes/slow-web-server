@@ -18,6 +18,11 @@ public class Controller {
     private IntRandomNumberGenerator intRandomNumberGenerator =
             new IntRandomNumberGenerator(1, 10);
 
+    @RequestMapping("/health")
+    public Mono<String> health() {
+        return Mono.just("OK");
+    }
+
     @RequestMapping("/**")
     public Mono<ResponseEntity<String>> hello(ServerHttpRequest request) {
         int delay = intRandomNumberGenerator.nextInt();
